@@ -31,4 +31,4 @@ def solution(dartResult):
         
     return sum(lst)
 
-    ## dartResult 안의 value들을 확인하며 규칙을 적용시켜 솔루션을 찾음!.
+    ## dartResult 안의 value들을 확인하며 규칙을 적용시켜 솔루션을 찾음!!.
