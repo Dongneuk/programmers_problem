@@ -30,3 +30,5 @@ def solution(dartResult):
             lst[-1] = lst[-1] * -1
         
     return sum(lst)
+
+    ## dartResult 안의 value들을 확인하며 규칙을 적용시켜 솔루션을 찾음.
