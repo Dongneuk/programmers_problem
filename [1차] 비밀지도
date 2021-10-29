@@ -1,0 +1,30 @@
+def solution(n, arr1, arr2):
+    
+    bin1 = []
+    bin2 = []
+    
+    lst =[]
+    
+    
+    for i in range(n):  
+        
+        bin1.append(bin(arr1[i])[2:])
+        bin2.append(bin(arr2[i])[2:])
+        
+        bin1[i] = '0' * (n - len(bin1[i])) + bin1[i]
+        bin2[i] = '0' * (n - len(bin2[i])) + bin2[i]
+        
+        estr ='' 
+        for j in range(n):
+            if bin1[i][j] == '1' or bin2[i][j] == '1':
+                estr += '#'
+            elif bin1[i][j] == '0' or bin2[i][j] == '0':
+                estr += ' '    
+        lst.append(estr)
+        
+    return lst
+
+
+    # for문을 두번 돌리는 방법으로 함. 두번 돌릴때 새로 추가하는 estr과 lst는 for문 밖에서 설정했는지, 첫번째 for문 안에서 설정했는지에 따라 결과차이가 크니 주의하기.
+
+    # zfill(), rjust() 함수 이해하기.
