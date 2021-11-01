@@ -1,0 +1,25 @@
+def solution(d, budget):
+    cnt = 0
+    d.sort()    
+
+    for i in range(len(d)):
+        if d[i] <= budget:
+            budget -= d[i]
+            cnt += 1
+        # else:
+        #     break
+    return cnt
+
+
+
+# 내가 하려다가 안됐던 풀이
+# budget이 0으로 내려간다면 break를 먼저 해줘야 cnt에 오류가 없음.
+
+# for i in d :
+#         budget -= i
+#         if budget < 0 :
+#                break
+#         cnt += 1
+#     answer = cnt
+#     return answer
+
