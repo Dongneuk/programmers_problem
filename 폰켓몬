@@ -1,0 +1,13 @@
+def solution(nums):
+    s = set(nums)
+    
+    if len(s) >= (len(nums)) / 2:
+        return len(nums) // 2
+    
+    else:
+        return len(s)
+
+
+
+
+## 오랜만에 set을 활용해본 기본 문제.
