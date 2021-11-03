@@ -1,0 +1,9 @@
+def solution(sizes):
+    lst1 = []
+    lst2 = []
+    
+    for i in sizes:
+        i.sort()
+        lst1.append(i[0])
+        lst2.append(i[1])
+    return max(lst1) * max(lst2)
