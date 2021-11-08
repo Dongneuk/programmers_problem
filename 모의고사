@@ -1,0 +1,30 @@
+def solution(answers):
+    student1 = [1,2,3,4,5]
+    student2 = [2,1,2,3,2,4,2,5]
+    student3 = [3,3,1,1,2,2,4,4,5,5]
+    score1 = 0
+    score2 = 0
+    score3 = 0
+    for i in range(len(answers)):
+        
+        if answers[i] == student1[i%5]:
+            score1 += 1
+        if answers[i] == student2[i%8]:
+            score2 += 1
+        if answers[i] == student3[i%10]:
+            score3 += 1
+    score = [score1, score2, score3]
+    answer = []
+    for i in range(len(score)):
+        if score[i] == max(score1, score2, score3):
+            answer.append(i+1)
+    return sorted(answer)
+            
+    
+## 학생별로 점수를 구한 후, 
+## max(score) 값과 같은 인덱스를 answer에 더하기.
+    
+    
+    
+    
+    
