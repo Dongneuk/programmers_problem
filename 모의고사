@@ -22,7 +22,7 @@ def solution(answers):
             
     
 ## 학생별로 점수를 구한 후, 
-## max(score) 값과 같은 인덱스를 answer에 더하기.
+## max(score) 값과 같은 인덱스를 answer에 더하기!.
     
     
     
