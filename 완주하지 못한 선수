@@ -1,0 +1,15 @@
+import collections
+
+def solution(participant, completion):
+    participant_dict = collections.Counter(participant)
+    completion_dict = collections.Counter(completion)
+    
+    answer = participant_dict-completion_dict
+    
+    return list(answer)[0]
+
+
+
+; collections 함수를 쓰면 dict와 같이 hash형 자료들의 값의 개수를 셀 수 있다.
+; dict처럼 {key:value} 형식으로 만들어짐.
+; Counter() 객체끼리는 빼는 것도 가능하다.
