@@ -13,3 +13,18 @@ def solution(participant, completion):
 ; collections 함수를 쓰면 dict와 같이 hash형 자료들의 값의 개수를 셀 수 있다.
 ; dict처럼 {key:value} 형식으로 만들어짐.
 ; Counter() 객체끼리는 빼는 것도 가능하다.
+
+
+
+
+; def solution(participant, completion):
+;     participant.sort()
+;     completion.sort()
+
+;     for i in range(len(completion)):
+;         if participant[i] != completion[i]:
+;             reuturn participant[i]
+;     return participant[len(participant)-1]
+
+# 완주하지 못한 선수가 한명이기에 위의 방법도 적용 가능.
+# for문을 돌릴때는 리스트의 길이가 더 짧은 completion으로 해야한다.
