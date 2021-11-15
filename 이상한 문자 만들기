@@ -1,0 +1,21 @@
+def solution(s):
+    slist = s.split(' ')
+    answer = []
+    for word in slist:
+        result = ''
+        for i in range(len(word)):          
+            if i % 2 == 0:
+                result += word[i].upper()
+            else:
+                result += word[i].lower()
+        answer.append(result)
+    return ' '.join(answer)
+
+
+
+
+# split함수 구분자에서 s.split()를 이용하면 띄어쓰기, 엔터를 구분하여 문자열을 나눔.
+# s.split()과 s.split(' ')의 차이 알것.
+
+
+# 리스트에서 +=와 append는 다른것.
