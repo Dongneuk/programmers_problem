@@ -1,0 +1,10 @@
+from fractions import gcd
+
+def solution(n, m):
+    answer = [gcd(n, m), n * m / gcd(n, m)]
+    return answer
+    
+
+
+
+## 최소공배수: n * m 을 gcd(n, m) 으로 나누면 도출가능.
