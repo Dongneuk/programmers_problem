@@ -1,0 +1,21 @@
+def solution(board, moves):
+    
+    stackbox = []
+    answer = 0
+    
+    for move in moves:
+        for i in range(len(board)):
+            if board[i][move-1] != 0:
+                stackbox.append(board[i][move-1])
+                board[i][move-1] = 0
+                
+                if len(stackbox) > 1:
+                    if stackbox[-2] == stackbox[-1]:
+                        stackbox.pop(-1)
+                        stackbox.pop(-1)
+                        answer += 2
+                break
+    return answer
+
+
+# 카카오 문제로, 리스트로 표현된 격자무늬를 구현하는 문제, 간단한 스텍 활용.
