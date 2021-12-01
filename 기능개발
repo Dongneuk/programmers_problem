@@ -33,3 +33,4 @@ def solution(progresses, speeds):
 
 # 걸린 시간을 새로운 리스트로 만듦.
 # 데이리스트 안에서 제일 마지막 경우의 수는 간단히 for 밖에서 추가해주면 완료.
+# daylst 후반부 경우의수에서 answer.append가 else에서 실행 안되기 때문에 for루프 밖에서 한번 더해줌.
