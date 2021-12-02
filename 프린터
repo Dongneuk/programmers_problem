@@ -3,7 +3,7 @@ def solution(priorities, location):
     deque = [[i, p] for i, p in enumerate(priorities)]
     answer = 0
 
-    while True:
+    while len(priorities) > 0:
         check = deque.pop(0)
         if any(check[1] < deq[1] for deq in deque):
             deque.append(check)
