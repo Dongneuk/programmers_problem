@@ -31,4 +31,4 @@ def solution(numbers):
     # 파이썬의 extend 함수.
     # extend(iterable)는 인자로 전달된 iterable의 모든 아이템을 리스트에 추가한다.
     # iterable이기 때문에 list, tuple 모두 가능함!!
-    # map을 여러번 활용하는것도 익숙해지기!!.
+    # map을 여러번 활용하는것도 익숙해지기!.
