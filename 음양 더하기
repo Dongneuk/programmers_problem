@@ -10,4 +10,4 @@ def solution(absolutes, signs):
 
 
 ; signs 리스트 안의 값이 true 혹은 false라고만 써있으면, 
-; string이 아니라 boolean임.
+; string이 아니라 boolean임!
