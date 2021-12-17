@@ -6,4 +6,4 @@ def solution(a, b):
     return answer
 
 
-# 리스트가 두개있는경우는 zip함수를 생각해봐도 괜찮다.
+# 리스트가 두개있는경우는 zip함수를 생각해봐도 괜찮다!.
