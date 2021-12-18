@@ -25,7 +25,7 @@ def solution(answers):
 ## 학생별로 점수를 구한 후, 
 ## max(score) 값과 같은 인덱스를 answer에 더하기!.
     
-;  비슷한 방식으로, 밑에 순서대로 점수를 추가하는 부분에서 enumerate 함수를 사용할 수 있음.
+;  비슷한 방식으로, 밑에 순서대로 점수를 추가하는 부분에서 enumerate 함수를 사용할 수 있음!.
 ; for idx, s in enumerate(score):
 ;     if s == max(score):
 ;     answer.append(idx+1)
