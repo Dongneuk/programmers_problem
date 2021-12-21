@@ -11,4 +11,4 @@ def solution(numbers):
     
 
 ## 파이썬에는 combinations 이라는 함수가 있다.
-## combinations 함수는 리스트에서 원하는 갯수만큼의 요소의 조합을 출력한다.
+## combinations 함수는 리스트에서 원하는 갯수만큼의 요소의 조합을 출력한다!.
