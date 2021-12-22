@@ -15,4 +15,4 @@ def solution(N, stages):
 
 
     # 스테이지별 탈락자 수를 dic안의 key, value로 정의한후 내림차순으로 return 하면 되는문제.
-    # 마지막 stage에 도달하지 못하는 경우도 있기에 그 경우들을 else에 지정해줘야 함!!
+    # 마지막 stage에 도달하지 못하는 경우도 있기에 그 경우들을 else에 지정해줘야 함!!!
