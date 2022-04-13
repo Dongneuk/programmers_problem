@@ -1,0 +1,9 @@
+a, b = map(int, input().strip().split(' '))
+
+while b > 0:
+    print(a* '*')
+    b -= 1
+    
+
+## TC: O(N).
+## map 함수에 대해 확실한 공부하기.
