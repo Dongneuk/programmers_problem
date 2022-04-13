@@ -1,34 +1,41 @@
 def solution(dartResult):
-    estr = ''
+    
+    s = ''
     lst = []
     
-    
     for i in dartResult:
-        if i.isdigit() == True:
-            estr += i
-        elif i == 'S':
-            estr = int(estr) ** 1
-            lst.append(estr)
-            estr = ''
-        elif i == 'D':
-            estr = int(estr) ** 2
-            lst.append(estr)
-            estr = ''
-        elif i == 'T':
-            estr = int(estr) ** 3
-            lst.append(estr)
-            estr = ''
         
+        ## number
+        if i.isdigit():
+            s += i
+            
+        ## S, D, T
+        elif i == 'S':
+            lst.append(int(s) ** 1)
+            s =''
+        elif i == 'D':
+            lst.append(int(s) ** 2)
+            s =''
+        elif i == 'T':
+            lst.append(int(s) ** 3)
+            s =''
+            
+        ## options
         elif i == '*':
-            if len(lst) > 1:
-                lst[-2] = lst[-2] * 2
-                lst[-1] = lst[-1] * 2
+            if len(lst) == 1:
+                lst[0] = lst[0] * 2
             else:
                 lst[-1] = lst[-1] * 2
-        
+                lst[-2] = lst[-2] * 2
         elif i == '#':
-            lst[-1] = lst[-1] * -1
-        
+            lst[-1] = lst[-1] * (-1)
     return sum(lst)
 
-    ## dartResult 안의 value들을 확인하며 규칙을 적용시켜 솔루션을 찾음!.
+## TC: O(N)
+## Brute Force            
+
+            
+                
+            
+            
+    
