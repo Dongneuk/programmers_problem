@@ -1,0 +1,35 @@
+def solution(n, k):
+    
+    string_number = convert(n, k)
+    count = 0
+    
+    for num in string_number.split('0'):
+        
+        if num.isdigit():
+            if is_prime(int(num)):
+                count += 1
+    return count
+    
+        
+
+def convert(n, k):
+    
+    temp = ''
+    
+    while n > 0:
+        n, mod = divmod(n, k)
+        temp += str(mod)
+    return temp[::-1]
+
+def is_prime(num):
+    
+    if num == 1:
+        return False
+    
+    for i in range(2, int(num**0.5) + 1):
+        
+        if num % i == 0:
+            return False
+    return True
+
+## TC: o(n), sc: o(n)
