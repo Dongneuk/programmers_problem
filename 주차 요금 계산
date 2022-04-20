@@ -1,0 +1,49 @@
+from collections import defaultdict
+import math
+
+def solution(fees, records):
+    
+    # 주차된 차와 시간
+    parked = {}
+    total = defaultdict(int)
+    
+    
+    ## 주차 시간
+    for record in records:
+        time, car, status = record.split(" ")
+        h, m = time.split(":")
+        time = int(h) * 60 + int(m)
+        
+        if car not in parked:
+            parked[car] = time
+        
+        else:
+            total[car] += time - parked[car]
+            del parked[car]
+    
+    
+    # 출차 안한 경우
+    end_time = 23 * 60 + 59
+    for car, time in parked.items():
+        total[car] += (end_time - time)
+    
+    
+    ## 요금 계산하기
+    
+    base_time, base_price, unit_time, unit_price = fees 
+    
+    answer = []
+    for car, time in total.items():
+        paid = base_price
+        
+        if time > base_time:
+            paid += math.ceil((time - base_time) / unit_time) * unit_price
+        
+        answer.append((car, paid))
+    
+    answer.sort()
+    return [a[1] for a in answer]
+        
+        
+        
+        
