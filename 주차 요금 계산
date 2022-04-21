@@ -43,6 +43,8 @@ def solution(fees, records):
     
     answer.sort()
     return [a[1] for a in answer]
+
+    ## TC: O(N)
         
         
         
