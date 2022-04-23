@@ -1,0 +1,40 @@
+from itertools import combinations_with_replacement
+from collections import Counter
+
+
+def solution(n, info):
+    max_diff = 0
+    max_lion_cnt = {}
+    
+    for comb in combinations_with_replacement(range(11), n):
+        score_lion, score_apichi = 0, 0
+        lion_cnt = Counter(comb)
+        
+        for i in range(1, 11):
+            if info[10-i] < lion_cnt[i]:
+                score_lion += i
+            
+            elif info[10-i] > 0:
+                score_apichi += i
+        
+        diff = score_lion - score_apichi
+        
+        if diff > max_diff:
+            max_lion_cnt = lion_cnt
+            max_diff = diff
+
+    answer = [0] * 11
+    if max_diff > 0:
+        for i in max_lion_cnt:
+            answer[10-i] = max_lion_cnt[i]
+        return answer
+    else:
+        return [-1]
+        
+
+        
+        
+        
+        
+        
+        
