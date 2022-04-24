@@ -1,0 +1,27 @@
+def solution(s):
+    
+    words = {'zero': '0', 'one': '1', 'two': '2',
+             'three': '3', 'four': '4', 'five': '5', 
+             'six': '6', 'seven': '7', 'eight': '8', 'nine': '9'}
+    
+    words_to_number = ''
+    answer = ''
+    
+    for char in s:
+        
+        if char.isalpha():
+            words_to_number += char
+            
+            if words_to_number in words:
+                answer += (words[words_to_number])
+                words_to_number = ''
+        
+        else:
+            answer += char
+    
+    return int(answer)
+                
+    
+    
+## time complexity: O(n) where n in the length of s
+## replace 함수를 사용하는 방법도 있다.
