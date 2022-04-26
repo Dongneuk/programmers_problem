@@ -1,36 +1,25 @@
-import numpy as np
-
 def solution(progresses, speeds):
     
-    daylst = np.ones(len(progresses), )
-    n = 1
+    answer = []
     
-    for i in range(len(progresses)):
-        while progresses[i] + speeds[i] * daylst[i] < 100:
-            
-            if progresses[i] + speeds[i] * daylst[i] < 100:
-                 daylst[i] += 1
-            else:
-                continue
-    
-    daylst = list(daylst)
-    
-    s = daylst[0]
-    cnt = 1
-    answer =[]
-    
-    for i in range(1, len(daylst)):
-        if s >= daylst[i]:
+    while progresses:
+        
+        for i in range(len(progresses)):
+            progresses[i] += speeds[i]
+        
+        cnt = 0
+        while progresses and progresses[0] >= 100:
+            progresses.pop(0)
+            speeds.pop(0)
             cnt += 1
-        else:
+        
+        if cnt > 0:
             answer.append(cnt)
-            cnt = 1
-            s = daylst[i]
-    answer.append(cnt)
+            cnt = 0
     return answer
 
-
-
-# 걸린 시간을 새로운 리스트로 만듦.
-# 데이리스트 안에서 제일 마지막 경우의 수는 간단히 for 밖에서 추가해주면 완료.
-# daylst 후반부 경우의수에서 answer.append가 else에서 실행 안되기 때문에 for루프 밖에서 한번 더해줌.
+## TC: O(n^2)
+            
+            
+            
+            
