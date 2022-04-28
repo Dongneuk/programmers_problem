@@ -1,0 +1,41 @@
+from itertools import permutations
+from collections import deque
+
+def solution(expression):
+    
+    answer = 0
+    for priority in list(permutations(['+', '-', '*'], 3)):
+        answer = max(answer, abs(make_result(priority, expression)))
+    
+    return answer
+
+def make_result(priority, expression):
+    
+    # expression을 deque 안으로 num, operation 나눠서 넣기.
+    deq = deque()
+    num = ''
+    for c in expression:
+        if c.isdigit():
+            num += c
+        else:
+            deq.append(num)
+            num = ''
+            deq.append(c)
+    deq.append(num)
+    
+    ## operation 별로 계산하기
+    for op in priority:
+        
+        stack = []
+        while len(deq) != 0:
+            temp = deq.popleft()
+            if temp == op:
+                result = str(eval(stack.pop() + op + deq.popleft()))
+                stack.append(result)
+            else:
+                stack.append(temp)
+        deq = deque(stack)
+    return int(deq[-1])
+
+        
+        
