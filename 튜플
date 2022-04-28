@@ -1,0 +1,16 @@
+def solution(s):
+    
+    s = s.replace('{{', '').replace('}}', '').replace('{','').split('},')
+    s.sort(key = len)
+    
+    answer = []
+    for num in s:
+        numlst = num.split(',')
+        for num2 in numlst:
+            if int(num2) not in answer:
+                answer.append(int(num2))
+    return answer
+        
+    
+    
+    
