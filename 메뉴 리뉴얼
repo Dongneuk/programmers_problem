@@ -1,0 +1,24 @@
+from itertools import combinations
+from collections import Counter
+
+def solution(orders, course):
+    answer = []
+    
+    for c in course:
+        combination_lst = []
+        
+        for order in orders:
+            for combi in combinations(order, c):
+                combination_lst.append(''.join(sorted(combi)))
+        
+        order_cnt = Counter(combination_lst).most_common()
+        
+        max_cnt = 0
+        for oc in order_cnt:
+            if oc[1] >= max_cnt:
+                max_cnt = oc[1]
+        
+        for oc in order_cnt:
+            if oc[1] >= max_cnt and oc[1] != 1:
+                answer.append(oc[0])
+    return sorted(answer)
