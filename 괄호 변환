@@ -1,0 +1,57 @@
+from collections import defaultdict
+
+def divide(string):
+    
+    dic = defaultdict(int)
+    # 문자열 p를 u, v로 분리
+    for bracket in string:
+        dic[bracket] += 1
+        if dic['('] == dic[')']:
+            idx = int(dic['('] + dic[')']) - 1
+            return string[:idx+1], string[idx+1:]
+
+## 올바른 괄호 문자열인지 체크.      
+def right_string(string):
+    stack = []
+    
+    for bracket in string:
+        
+        if bracket== '(':
+            stack.append(bracket)
+        
+        else:
+            if not stack:
+                return False
+            stack.pop()
+            
+    return True
+
+def solution(p):
+    
+    #1
+    if not p:
+        return ""
+    #2
+    u, v = divide(p)
+    
+    
+    # 3
+    if right_string(u):
+        # 3-1
+        return u + solution(v)
+    # 4
+    else:
+        # 4-1
+        answer = '('
+        
+        answer += solution(v)
+        answer += ')'
+        
+        u = u[1:-1]
+        
+        for char in u:
+            if char == '(':
+                answer += ')'
+            else:
+                answer += '('
+    return answer
