@@ -1,0 +1,34 @@
+import math
+
+def solution(m, musicinfos):
+    
+    answer = []
+    m = m.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+    
+    for info in musicinfos:
+        start, end, title, code = info.split(",")
+        
+        hour, minute = map(int, start.split(":"))
+        start = hour * 60 + minute
+        
+        hour, minute = map(int, end.split(":"))
+        end = hour * 60 + minute
+        duration = end - start
+        
+        code = code.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+        
+        
+        code *= math.ceil(duration / len(code))
+        code = code[:duration]
+        
+        if m not in code:
+            continue
+            
+        else:
+            answer.append((duration, title))
+    
+    if len(answer) > 0:
+        answer.sort(key=lambda x:-x[0])
+        return answer[0][1]
+    
+    return "(None)"
