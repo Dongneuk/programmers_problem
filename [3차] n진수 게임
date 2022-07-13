@@ -1,0 +1,21 @@
+digits = "0123456789ABCDEF"
+def convert(n, base):
+    q, r = divmod(n, base)
+    if q == 0:
+        return digits[r]
+    else:
+        return convert(q, base) + digits[r]
+
+
+def solution(n, t, m, p):
+    
+    game = ""
+    for i in range(m*t):
+        game += convert(i, n)
+        
+    mine = ""
+    for i in range(m*t):
+        if i % m == p-1:
+            mine += game[i]
+    
+    return mine
