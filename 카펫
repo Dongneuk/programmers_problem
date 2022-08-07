@@ -11,4 +11,6 @@ def solution(brown, yellow):
                     return [a, b]
 
 
+
+
 ## 약수를 굳이 다 새로운 리스트에 저장할 필요가 없다.
