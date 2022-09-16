@@ -1,0 +1,29 @@
+from collections import deque
+
+def solution(s):
+    
+    def is_right(lst):
+        stack = []
+        for c in lst:
+            if c == '(' or c == '{' or c == '[':
+                stack.append(c)
+            else:
+                if not stack:
+                    return False
+                if c == ')' and stack.pop() != '(':
+                    return False
+                elif c == '}' and stack.pop() != '{':
+                    return False
+                elif c == ']' and stack.pop() != '[':
+                    return False
+                
+        return len(stack) == 0
+    
+
+    s = deque(s)
+    answer = 0
+    for _ in range(len(s)):
+        s.rotate(-1)
+        if is_right(s):
+            answer += 1
+    return answer
