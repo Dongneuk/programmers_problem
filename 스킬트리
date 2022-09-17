@@ -1,0 +1,20 @@
+from collections import deque
+
+def solution(skill, skill_trees):
+    
+    answer = 0
+    
+    # 스킬트리당 체크하기.
+    for skill_tree in skill_trees:
+        skill_lst = deque(skill)
+        
+        # 각 스킬트리 안의 스킬(s) 이,
+        for s in skill_tree:
+            # 스킬리스트(스킬 배우는 순서) 안에 있으면
+            if s in skill_lst:
+                if s != skill_lst.popleft():
+                    break
+        else:
+            answer += 1
+    
+    return answer
