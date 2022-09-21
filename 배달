@@ -1,0 +1,36 @@
+import heapq
+
+def dijkstra(cost_lst, graph):
+    heap = [] 
+    heapq.heappush(heap, [0, 1])
+    
+    while heap:
+        cost, node = heapq.heappop(heap)
+        for c, n in graph[node]:
+            if cost + c < cost_lst[n]:
+                cost_lst[n] = cost+c
+                heapq.heappush(heap, [cost+c, n])
+    
+
+def solution(N, road, K):
+    
+    # N+1만큼 cost_lst 만들기.
+    cost_lst = [float('inf')] * (N+1)
+    cost_lst[1] = 0
+    
+    # 마을별 연결된 마을, 비용 추가. [cost, village]
+    graph = [[] for _ in range(N+1)]
+    for r in road:
+        a, b, time = r[0], r[1], r[2]     
+        graph[a].append([time, b])
+        graph[b].append([time, a])
+        
+    dijkstra(cost_lst, graph)
+    
+    # 조건 충족 정답 갯수
+    answer = 0
+    for c in cost_lst:
+        if c <= K:
+            answer += 1
+    
+    return answer
