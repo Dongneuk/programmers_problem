@@ -1,0 +1,18 @@
+import heapq
+
+def solution(n, works):
+    
+    if sum(works) <= n:
+        return 0
+    
+    heap = []
+    
+    for work in works:
+        heapq.heappush(heap, -work)
+    
+    while n:
+        max_work = heapq.heappop(heap) + 1
+        n -= 1
+        heapq.heappush(heap, max_work)
+    
+    return sum(i**2 for i in heap)

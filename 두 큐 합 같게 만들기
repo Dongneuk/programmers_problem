@@ -1,0 +1,43 @@
+from collections import deque
+
+def solution(queue1, queue2):
+    
+    q1 = deque(queue1)
+    q2 = deque(queue2)
+    
+    # 작업을 세는 원소 추가.
+    max_cnt = len(q1) * 3
+    cnt = 0
+    
+    # queue들의 길이
+    len_q1 = len(queue1)
+    len_q2 = len(queue2)
+    len_total = (len_q1 + len_q2) * 3
+    
+    # queue의 합
+    sum_q1 = sum(queue1)
+    sum_q2 = sum(queue2)
+    
+    
+    # 두 큐 최대길이 합만큼 카운트하기
+    while q1 and q2 and len_total * 3 > 0:
+        
+        if sum_q1 == sum_q2:
+            return cnt
+        
+        elif sum_q1 > sum_q2:
+            value = q1.popleft()
+            q2.append(value)
+            sum_q1 -= value
+            sum_q2 += value
+        
+        elif sum_q1 < sum_q2:
+            value = q2.popleft()
+            q1.append(value)
+            sum_q2 -= value
+            sum_q1 += value
+        
+        cnt += 1
+        len_total -= 1
+    
+    return -1
