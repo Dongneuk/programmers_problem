@@ -1,0 +1,15 @@
+def solution(A, B):
+    
+    A.sort()
+    B.sort()
+    
+    cnt = 0
+    for _ in range(len(B)):
+        if B[-1] > A[-1]:
+            cnt += 1
+            B.pop()
+            A.pop()
+        
+        else:
+            A.pop()
+    return cnt

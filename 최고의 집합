@@ -1,0 +1,19 @@
+def solution(n, s):
+    
+    if n > s:
+        return [-1]
+
+    
+    lst = []
+    a, b = divmod(s, n)
+    
+    # 몫만큼 넣어주기
+    for _ in range(n):
+        lst.append(a)
+    
+    # 나머지 0 될때까지 돌려가면서 1 추가.
+    for i in range(b):
+        lst[i] += 1
+    
+    lst.sort()
+    return lst
