@@ -1,0 +1,26 @@
+from collections import defaultdict
+
+def solution(genres, plays):
+    
+    dic = defaultdict(int)
+    lst = []
+    for i in range(len(genres)):
+        lst.append([genres[i], plays[i], i])
+        dic[genres[i]] += plays[i]
+    
+    lst = sorted(lst, key=lambda x:(-x[1], x[2]))
+    
+    dic = sorted(dic.items(), key=lambda x:x[1], reverse = True)
+    
+    answer = []
+    for i in dic:
+        best = 0
+        for song in lst:
+            if i[0] == song[0]:
+                best += 1
+                answer.append(song[2])
+            
+            if best == 2:
+                break
+    
+    return answer
