@@ -1,0 +1,33 @@
+from collections import deque
+
+def solution(n, edge):
+    
+    visited = [False] * (n+1)
+    distance = [0] * (n+1)
+    graph = [[] for _ in range(n+1)]
+    
+    for a, b in edge:
+        graph[a].append(b)
+        graph[b].append(a)
+    
+    def bfs(node):
+        visited[node] = True
+        distance[node] += 1
+        queue = deque()
+        queue.append(node)
+        
+        while queue:
+            v = queue.popleft()
+            
+            for a in graph[v]:
+                if not visited[a]:
+                    distance[a] = distance[v] + 1
+                    visited[a] = True
+                    queue.append(a)
+    
+    bfs(1)
+    answer = 0
+    for value in distance:
+        if value == max(distance):
+            answer += 1
+    return answer
