@@ -1,0 +1,28 @@
+from collections import defaultdict
+
+def solution(tickets):
+    
+    answer = []
+    dic = defaultdict(list)
+    
+    for ticket in tickets:
+        a, b = ticket[0], ticket[1]
+        dic[a].append(b)
+    
+    # 도착점 역순 정렬
+    for i in dic.values():
+        i.sort(reverse=True)
+    
+    stack = ["ICN"]
+    
+    while stack:
+        top = stack.pop()
+        
+        if top not in dic or not dic[top]:
+            answer.append(top)
+        
+        else:
+            stack.append(top)
+            stack.append(dic[top].pop())
+  
+    return answer[::-1]
