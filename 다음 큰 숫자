@@ -8,5 +8,6 @@ def solution(n):
             
             return next_n
             break
+            
         else:
             next_n += 1

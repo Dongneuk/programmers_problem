@@ -11,4 +11,3 @@ def solution(n):
         d[i] = d[i-2] + d[i-1]
     
     return d[n] % 1234567
-    

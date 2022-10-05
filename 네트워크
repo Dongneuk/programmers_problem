@@ -5,6 +5,7 @@ def solution(n, computers):
         
         # 방문한 컴퓨터 안의 네트워크들을 체크하기 위해 다시 dfs로 돌아야한다.
         for i in range(len(computers)):
+            # 네트워크가 현재 노드와 같지 않으면서도, + 연결(1) 이 되어있다면,
             if i != v and computers[v][i] == 1:
                 if not visited[i]:
                     dfs(i)
