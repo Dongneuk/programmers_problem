@@ -9,11 +9,31 @@ def solution(n, lost, reserve):
         elif i+1 in lost_set:
             lost_set.remove(i+1)
     return n-len(lost_set)
-            
-    
 
 
 ## 그리디 문제.
 # 처음에 여벌의 체육복을 가지고 있는 학생이 잃어버린 경우를 제외하기 위해
 # set으로 바꾸고 겹쳐지는 부분을 제거함.
 # lost를 lost_set으로 변경한 후에 둘을 같게 생각해버려서 시간이 오래 걸림!.
+            
+#############################################ㅍ
+
+def solution(n, lost, reserve):
+    
+    new_reserve = [r for r in reserve if r not in lost]
+    new_lost = [l for l in lost if l not in reserve]
+    
+    new_reserve.sort()
+    new_lost.sort()
+    
+    for r in new_reserve:
+        a = r-1
+        b = r+1
+        
+        if a in new_lost:
+            new_lost.remove(a)
+        elif b in new_lost:
+            new_lost.remove(b)
+        
+    return n - len(new_lost)
+        
