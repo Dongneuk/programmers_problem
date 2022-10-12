@@ -23,3 +23,46 @@ def solution(n, s, a, b, fares):
         answer = min(answer, graph[s][k] + graph[k][a] + graph[k][b])
     
     return answer
+
+###########################################################################
+
+import heapq
+
+def dijkstra(adj, n, s, e):
+    heap = []
+    heapq.heappush(heap, [0, s])
+    INF = float('inf')
+    dist = [INF] * (n+1)
+    dist[s] = 0
+    
+    while heap:
+        cost, node = heapq.heappop(heap)
+        if dist[node] < cost:
+            continue
+        for n, c in adj[node]:
+            c += cost
+            if c < dist[n]:
+                dist[n] = c
+                heapq.heappush(heap, [c, n])
+    return dist[e]
+            
+            
+
+def solution(n, s, a, b, fares):
+    
+    adj = [[] for _ in range(n + 1)]
+    for x, y, c in fares:
+        adj[x].append([y, c])
+        adj[y].append([x, c])
+    
+    res = dijkstra(adj, n, s, a) + dijkstra(adj, n, s, b)
+    for i in range(1, n + 1):
+        if s != i:
+            res = min(res, dijkstra(adj, n, s, i) + dijkstra(adj, n, i, a) + dijkstra(adj, n, i, b))
+    
+    return res
+        
+    
+    
+    
+    
