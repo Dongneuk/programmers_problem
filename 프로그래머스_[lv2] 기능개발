@@ -1,0 +1,26 @@
+import math
+from collections import deque
+
+def solution(progresses, speeds):
+    progresses = deque(progresses)
+    speeds = deque(speeds)
+    
+    answer = []
+    cnt = 0
+    while progresses:
+        
+        if progresses and progresses[0] < 100:
+            day = math.ceil( (100-progresses[0]) / speeds[0] )
+            for i in range(len(progresses)):
+                progresses[i] += day * speeds[i]
+            
+        while progresses and progresses[0] >= 100:
+            progresses.popleft()
+            speeds.popleft()
+            cnt += 1
+        
+        if cnt != 0:
+            answer.append(cnt)
+            cnt = 0
+            
+    return answer

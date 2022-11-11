@@ -1,0 +1,19 @@
+def solution(name):
+    answer = 0
+
+    # 그냥 쭉 갈때 좌우이동 횟수
+    min_cnt = len(name) - 1
+
+    for i, v in enumerate(name):
+
+        # 상하이동 최소 개수 추가
+        answer += min(ord(v) - ord('A'), ord('Z') - ord(v) + 1)
+
+        # 현재 위치 다음 인덱스부터 연속된 A 찾기
+        next = i + 1
+        while next < len(name) and name[next] == 'A':
+            next += 1
+
+        min_cnt = min(min_cnt, i + i + len(name) - next, i + 2 * (len(name) - next))
+
+    return answer + min_cnt
