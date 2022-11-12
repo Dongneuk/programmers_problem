@@ -1,0 +1,23 @@
+from collections import deque
+
+def solution(priorities, location):
+    
+    priorities = deque(priorities)
+    idx = deque(i for i in range(len(priorities)))
+    idx[location] = "order"
+    
+    answer = 0
+    while priorities:
+        check = max(priorities)
+        if priorities[0] == check:
+            if idx[0] == "order":
+                answer += 1
+                return answer
+            else:
+                priorities.popleft()
+                idx.popleft()
+                answer += 1
+            
+        else:
+            priorities.append(priorities.popleft())
+            idx.append(idx.popleft())
