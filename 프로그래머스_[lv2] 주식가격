@@ -1,0 +1,14 @@
+def solution(prices):
+    
+    # 주식 가격이 안 떨어질 경우 인덱스별 최대 시간
+    answer = [i for i in range(len(prices)-1, -1, -1)]
+    
+    stack = [0]
+    for i in range(1, len(prices)):
+        
+        while stack and prices[stack[-1]] > prices[i]:
+            j = stack.pop()
+            answer[j] = i - j
+        stack.append(i)
+    
+    return answer
