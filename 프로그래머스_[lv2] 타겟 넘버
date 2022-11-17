@@ -1,0 +1,15 @@
+from collections import deque
+
+def solution(numbers, target):
+    
+    lst = [0]
+    
+    for number in numbers:
+        tmp = []
+        for l in lst:
+            tmp.append(l + number)
+            tmp.append(l - number)
+        
+        lst = tmp
+    
+    return lst.count(target) 

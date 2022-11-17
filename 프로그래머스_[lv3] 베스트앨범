@@ -4,23 +4,26 @@ def solution(genres, plays):
     
     dic = defaultdict(int)
     lst = []
+    
     for i in range(len(genres)):
-        lst.append([genres[i], plays[i], i])
         dic[genres[i]] += plays[i]
+        lst.append([genres[i], plays[i], i])
     
-    lst = sorted(lst, key=lambda x:(-x[1], x[2]))
+    dic = sorted(dic.items(), key = lambda x:x[1], reverse = True)
+    lst = sorted(lst, key = lambda x:(-x[1], x[2]))
     
-    dic = sorted(dic.items(), key=lambda x:x[1], reverse = True)
-    
+#     print(dic)
+#     print(lst)
     answer = []
+    
     for i in dic:
         best = 0
         for song in lst:
             if i[0] == song[0]:
                 best += 1
                 answer.append(song[2])
-            
+                print(answer)
             if best == 2:
                 break
-    
-    return answer
+                    
+    return answer       
