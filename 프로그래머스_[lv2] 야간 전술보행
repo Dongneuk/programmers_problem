@@ -1,0 +1,18 @@
+def solution(distance, scope, times):
+    
+    # distance의 범위가 너무 넓어서 scope를 기준으로 해야한다.
+    answer = [distance]
+    
+    for i in range(len(scope)):
+        start, end = sorted(scope[i])
+        work, rest = times[i]
+        
+        time = start
+        while time <= end:
+            n = time % (work+rest)
+            if 0 < n <= work:
+                answer.append(time)
+                break
+            time += 1
+    
+    return sorted(answer)[0]
