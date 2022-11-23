@@ -1,0 +1,32 @@
+import heapq
+
+def solution(operations):
+    
+    min_heap = []
+    max_heap = []
+    
+    for operation in operations:
+        order, number = operation.split(" ")
+        number = int(number)
+        
+        if order == 'I':
+            heapq.heappush(min_heap, number)
+            heapq.heappush(max_heap, (-1 * number, number))
+        
+        elif order == 'D':
+            if not min_heap:
+                continue
+            
+            if number == 1:
+                max_value = heapq.heappop(max_heap)[1]
+                min_heap.remove(max_value)
+            
+            if number == -1:
+                min_value = heapq.heappop(min_heap)
+                max_heap.remove((-1 * min_value, min_value))
+    
+    if not min_heap:
+        return [0, 0]
+    
+    else:
+        return [heapq.heappop(max_heap)[1], heapq.heappop(min_heap)]
