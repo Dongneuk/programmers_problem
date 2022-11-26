@@ -1,19 +1,20 @@
 def solution(numbers):
     
     answer = []
-    
     for number in numbers:
         
         if number % 2 == 0:
-            answer.append(number+1)
-    
+            answer.append(number + 1)
+        
         else:
             y = '0' + bin(number)[2:]
             idx = y.rfind('0')
             y = list(y)
             y[idx] = '1'
-            y[idx+1] = '0'
+            y[idx + 1] = '0'
+            
             y = int(''.join(y), 2)
             answer.append(y)
-        
+    
     return answer
+            
