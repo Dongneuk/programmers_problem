@@ -1,0 +1,21 @@
+from collections import defaultdict
+
+def solution(k, tangerine):
+    
+    dic = defaultdict(int)
+    
+    for tan in tangerine:
+        dic[tan] += 1
+        
+    dic = sorted(dic.items(), reverse = True, key = lambda x:x[1])
+    
+    answer = 0
+    for key, value in dic:
+        
+        if k <= 0:
+            break
+        
+        k -= value
+        answer += 1
+    
+    return answer

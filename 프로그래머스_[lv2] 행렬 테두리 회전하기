@@ -1,0 +1,42 @@
+def solution(rows, columns, queries):
+    
+    answer = []
+    board = [[0] * (columns) for _ in range(rows)]
+    
+    num = 1
+    for i in range(rows):
+        for j in range(columns):
+            board[i][j] = num
+            num += 1
+    
+    for query in queries:
+        x1, y1, x2, y2 = query[0] - 1, query[1] - 1, query[2] - 1, query[3] -1
+        tmp = board[x1][y1]
+        min_value = tmp
+        
+        for k in range(x1, x2):
+            board[k][y1] = board[k+1][y1]
+            min_value = min(min_value, board[k+1][y1])
+        
+        for k in range(y1, y2):
+            board[x2][k] = board[x2][k+1]
+            min_value = min(min_value, board[x2][k+1])
+        
+        for k in range(x2, x1, -1):
+            board[k][y2] = board[k-1][y2]
+            min_value = min(min_value, board[k-1][y2])
+        
+        for k in range(y2, y1, -1):
+            board[x1][k] = board[x1][k-1]
+            min_value = min(min_value, board[x1][k-1])
+        
+        board[x1][y1+1] = tmp
+        
+        answer.append(min_value)
+        
+        
+    return answer
+        
+        
+        
+        
