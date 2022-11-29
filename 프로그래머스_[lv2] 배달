@@ -1,0 +1,34 @@
+import heapq
+
+def dijkstra(distance, graph):
+    heap = []
+    heapq.heappush(heap, [0, 1])
+    
+    while heap:
+        time, node = heapq.heappop(heap)
+        for t, n in graph[node]:
+            if time + t < distance[n]:
+                distance[n] = time + t
+                heapq.heappush(heap, [time+t, n])
+        
+        
+    
+
+def solution(N, road, K):
+    
+    distance = [float('inf')] * (N+1)
+    distance[1] = 0
+    
+    graph = [[] for _ in range(N+1)]
+    
+    for a, b, c in road:
+        graph[a].append((c, b))
+        graph[b].append((c, a))
+    
+    dijkstra(distance, graph)
+    
+    return len([i for i in distance if i <= K])
+    
+            
+    
+    
